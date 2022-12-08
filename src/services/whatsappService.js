@@ -19,7 +19,7 @@ function sendMessageWhatsApp(textResponse, phoneNumber) {
         body: data,
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer EAAG539o8zfMBACp6ZAFoschlyzHo22ZAOe3nzeuT8vfteCzZAXA2qUGhvsfaJwmqBgmsaZCPRFSy0E9qLAtfpZBHwZBZBAMBJiTAo7rB3YdsE3lcYlmoXumSdEfK209SsvmvPZAnZBy48HxEkUXh4wMY5Jtqc8ZBwsD0QYmoZBcrXpXOhIW0tHCsTRzHZBeidB8CrGEQ6C2SGTbcowZDZD"
+            Authorization: env.process.bearerKey
         }
     }
 
