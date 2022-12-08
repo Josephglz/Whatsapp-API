@@ -33,7 +33,7 @@ const ReceivedMessage = (req, res) => {
             var text = getTextUser(message);
             var phoneNumber = message["from"]
 
-            phoneNumber = phoneNumber.substring(2);
+            phoneNumber = phoneNumber.substring(1, phoneNumber.length);
             console.log(phoneNumber)
             whatsappService.sendMessageWhatsApp('Hola, procesando...' + text, phoneNumber);
         }
