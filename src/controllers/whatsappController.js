@@ -32,9 +32,9 @@ const ReceivedMessage = (req, res) => {
             var message = messageObject[0];
             var text = getTextUser(message);
             var phoneNumber = message["from"]
-            console.log(phoneNumber)
-            
+
             phoneNumber = phoneNumber.substring(2);
+            console.log(phoneNumber)
             whatsappService.sendMessageWhatsApp('Hola, procesando...' + text, phoneNumber);
         }
         res.send("EVENT_RECEIVED");
