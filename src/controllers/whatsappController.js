@@ -30,6 +30,8 @@ const ReceivedMessage = (req, res) => {
         var text = getTextUser(message);
         myConsole.log(messageObject);
 
+        console.log(text)
+
         res.send("EVENT_RECEIVED");
     } catch (e) {
         console.log(e);
@@ -45,7 +47,6 @@ function getTextUser(message) {
     } else if(typeMessage == "interactive") {
         var interactiveObject = message["interactive"];
         var interactiveType = interactiveObject["type"];
-        console.log(interactiveObject)
 
         if(interactiveType == "button_reply") {
             text = (interactiveObject["button_reply"])["title"];
