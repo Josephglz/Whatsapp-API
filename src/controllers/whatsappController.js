@@ -1,6 +1,6 @@
 const fs = require('fs');
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
-const {whatsappService} = require('../services/whatsappService');
+const whatsappService = require('../services/whatsappService');
 
 
 const verifyToken = (req, res) => {
