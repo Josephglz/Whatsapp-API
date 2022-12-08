@@ -31,8 +31,8 @@ const ReceivedMessage = (req, res) => {
         if(typeof messageObject != "undefined") {
             var message = messageObject[0];
             var phoneNumber = message["from"]
-
-            whatsappService.sendMessageWhatsApp('Hola, procesando...', phoneNumber);
+            var text = getTextUser(message);
+            whatsappService.sendMessageWhatsApp('Hola, procesando...' + text, phoneNumber);
         }
         res.send("EVENT_RECEIVED");
     } catch (e) {
