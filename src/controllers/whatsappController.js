@@ -26,7 +26,8 @@ const ReceivedMessage = (req, res) => {
         var changes = (entry["changes"])[0];
         var value = changes["value"];
         var messageObject = value["messages"];
-
+        var message = messageObject[0];
+        var text = getTextUser(message);
         myConsole.log(messageObject);
 
         res.send("EVENT_RECEIVED");
@@ -34,6 +35,25 @@ const ReceivedMessage = (req, res) => {
         console.log(e);
         res.send("EVENT_RECEIVED");
     }
+}
+
+function getTextUser(message) {
+    var text = "";
+    var typeMessage = message["type"];
+    if(typeMessage == "text") {
+        text = (message["text"])["body"];
+    } else if(typeMessage == "interactive") {
+        var interactiveObject = message["interactive"];
+        var interactiveType = interactiveObject["type"];
+        console.log(interactiveObject)
+
+        if(interactiveType == "button_reply") {
+            text = (interactiveObject["button_reply"])["title"];
+        } else if (interactiveType == "list_reply"){
+            text = (interactiveObject["list_reply"])["title"];
+        }
+    }
+    return text;
 }
 
 module.exports = {
