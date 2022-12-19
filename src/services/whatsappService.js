@@ -1,17 +1,7 @@
 const https = require('https');
 
-function sendMessageWhatsApp(textResponse, phoneNumber) {
-    const data = JSON.stringify({
-        "messaging_product": "whatsapp",    
-        "recipient_type": "individual",
-        "to": phoneNumber,
-        "type": "text",
-        "text": {
-            "preview_url": false,
-            "body": textResponse
-        }
-    })
 
+function sendMessageWhatsApp(data) {
     const options = {
         host: "graph.facebook.com",
         path: "/v15.0/102694309359281/messages",
@@ -19,7 +9,7 @@ function sendMessageWhatsApp(textResponse, phoneNumber) {
         body: data,
         headers: {
             "Content-Type": "application/json",
-            Authorization: process.env.bearerKey
+            Authorization: 'Bearer EAAG539o8zfMBAEQ4YnsZApN19NiKLw5VnKQrmiTT0w5ZB7aNNRNURZC2BgBUvypWpgNZAYWOZBtlROqVswTmIAb6gHV5boTXfIZCVCrAZCVmuizpNHdOazAh9nfL7po2wuEeTGCOZCPI3Hl7v5sCaUHlpGnX1EqIxwxWZCIZBYkGJPZAWLSLhX5GfZAf'
         }
     }
 

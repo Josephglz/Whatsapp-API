@@ -1,7 +1,6 @@
-const fs = require('fs');
-const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
-const whatsappService = require('../services/whatsappService');
-
+const fs = require('fs')
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"))
+const wppProcess = require('../shared/ProcessMessage')
 
 const verifyToken = (req, res) => {
     
@@ -28,18 +27,21 @@ const ReceivedMessage = (req, res) => {
         var changes = (entry["changes"])[0];
         var value = changes["value"];
         var messageObject = value["messages"];
+        
         if(typeof messageObject != "undefined") {
             var message = messageObject[0];
-            var text = getTextUser(message);
             var phoneNumber = message["from"]
-            
+
+            var text = getTextUser(message);
             phoneNumber = phoneNumber.substring(0, 2) + phoneNumber.substring(3);
-            console.log(phoneNumber)
-            whatsappService.sendMessageWhatsApp('Hola, procesando...' + text, phoneNumber);
+
+            if(text != "") {
+                wppProcess.Process(text, phoneNumber);
+            }
         }
         res.send("EVENT_RECEIVED");
     } catch (e) {
-        console.log(e);
+        myConsole.log(e)
         res.send("EVENT_RECEIVED");
     }
 }

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bd8a6908-9ab2-46ab-9ffe-b6cab1f58187/AppServices/subscriptions/bd8a6908-9ab2-46ab-9ffe-b6cab1f58187/resourceGroups/viajeswhatsappapi_resource/providers/Microsoft.Web/sites/viajeswhatsappapi",
+    "appService.deploySubpath": "src"
+}
